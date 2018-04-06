@@ -40,13 +40,13 @@ class InputScreen extends Component {
             <span className='InputScreen_example' onClick={this.useExample}>
               e.g.,<b>{this.props.exampleLink}</b>
             </span>
-            <button onClick={this.props.toggleHelp}>
-              {this.props.isHelpOpen ? 'Hide more options' : 'Show more options'}
+            <button className='btn'  onClick={this.props.toggleHelp}>
+              More options
             </button>
           </div>
           <div className={'InputScreen_help' + (this.props.isHelpOpen ? ' InputScreen_help__open' : '')}>
             You can download a few video if you paste several links into the area.<br/>
-            <button onClick={this.props.toggleHelp}>Got it</button>
+            <button className='btn' onClick={this.props.toggleHelp}>Got it</button>
           </div>
         </div>
         <div className='InputScreen_form'>
