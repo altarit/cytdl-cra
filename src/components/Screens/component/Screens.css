@@ -55,5 +55,8 @@
 }
 
 .Screen {
+  display: flex;
+  flex-direction: column;
   margin: 10px;
+  height: calc(100% - 20px);
 }

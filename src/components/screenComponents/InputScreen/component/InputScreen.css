@@ -1,0 +1,24 @@
+.InputScreen {
+}
+
+.InputScreen_header {
+  flex: 0 0 70px;
+}
+
+.InputScreen_footer {
+  margin-top: 10px;
+  flex: 0 0 20px;
+}
+
+.InputScreen_form {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+.InputScreen_textarea {
+  width: 100%;
+  background: white;
+  border: solid 1px #222222;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
