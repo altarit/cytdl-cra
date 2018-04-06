@@ -10,6 +10,22 @@
   justify-content: space-between;
 }
 
+.InputScreen_example {
+  cursor: default;
+}
+
+.InputScreen_help {
+  height: 0;
+  overflow-y: hidden;
+  padding: 0 10px;
+  transition: height 500ms ease-in, padding-top 500ms ease-in, padding-bottom 500ms ease-in;
+}
+
+.InputScreen_help__open {
+  padding: 10px 10px;
+  height: 100px;
+}
+
 .InputScreen_footer {
   margin-top: 10px;
   flex: 0 0 20px;

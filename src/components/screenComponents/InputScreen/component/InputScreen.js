@@ -10,8 +10,11 @@ class InputScreen extends Component {
     totalCount: PropTypes.number.isRequired,
     links: PropTypes.array.isRequired,
     safeText: PropTypes.string.isRequired,
+    exampleLink: PropTypes.string.isRequired,
+    isHelpOpen: PropTypes.bool.isRequired,
 
     rescanArea: PropTypes.func.isRequired,
+    toggleHelp: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -23,14 +26,27 @@ class InputScreen extends Component {
     this.props.rescanArea(this.refs.area.value)
   }
 
+  useExample = () => {
+    this.refs.area.value = this.props.exampleLink
+    this.onAreaChange()
+  }
+
   render() {
     return (
       <div className='InputScreen Screen'>
         <div className='InputScreen_header'>
           <h2>Add video link</h2>
           <div className='InputScreen_description'>
-            <span>Paste <b>https://www.youtube.com/watch?v=dQw4w9WgXcQ</b> for example</span>
-            <button>Show more options</button>
+            <span className='InputScreen_example' onClick={this.useExample}>
+              e.g.,<b>{this.props.exampleLink}</b>
+            </span>
+            <button onClick={this.props.toggleHelp}>
+              {this.props.isHelpOpen ? 'Hide more options' : 'Show more options'}
+            </button>
+          </div>
+          <div className={'InputScreen_help' + (this.props.isHelpOpen ? ' InputScreen_help__open' : '')}>
+            You can download a few video if you paste several links into the area.<br/>
+            <button onClick={this.props.toggleHelp}>Got it</button>
           </div>
         </div>
         <div className='InputScreen_form'>
