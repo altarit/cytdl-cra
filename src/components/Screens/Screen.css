@@ -1,0 +1,51 @@
+.Screens {
+  background: #eeeeee;
+  width: 250px;
+  height: 250px;
+}
+
+.Screens > span {
+  position: relative;
+  width: 200px;
+  background: #9999cc;
+  height: 220px;
+}
+
+.Screens_box {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 190px;
+  border: solid 1px #333333;
+  overflow-x: hidden;
+}
+
+.left .Screens_box.carousel-enter {
+  left: -220px;
+}
+
+.right .Screens_box.carousel-enter {
+  left: 220px;
+}
+
+.Screens_box.carousel-enter.carousel-enter-active {
+  left: 0;
+  transition: left 300ms ease-in;
+}
+
+.Screens_box.carousel-leave {
+  left: 0;
+}
+
+.Screens_box.carousel-leave.carousel-leave-active {
+  transition: left 300ms ease-in;
+}
+
+.left .Screens_box.carousel-leave.carousel-leave-active {
+  left: 220px;
+}
+
+.right .Screens_box.carousel-leave.carousel-leave-active {
+  left: -220px;
+}
