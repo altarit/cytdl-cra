@@ -8,6 +8,9 @@
 .PreviewEntry_tumbler {
   flex: 0 0 40px;
   background: #6f23cc;
+  display: flex;
+  align-items: center;
+  padding: 4px;
 }
 
 .PreviewEntry_thumbnail {

@@ -11,6 +11,7 @@ class PreviewScreen extends Component {
     previews: PropTypes.array.isRequired,
 
     mapLinksToPreviews: PropTypes.func.isRequired,
+    togglePreview: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -25,7 +26,9 @@ class PreviewScreen extends Component {
           <h2>PreviewScreen</h2>
         </div>
         <div className='PreviewScreen_entries'>
-          {this.props.previews.map(el => <PreviewEntry key={el.n} entry={el} />)}
+          {this.props.previews.map(el =>
+            <PreviewEntry key={el.id} entry={el} togglePreview={this.props.togglePreview} />
+          )}
         </div>
       </div>
     )

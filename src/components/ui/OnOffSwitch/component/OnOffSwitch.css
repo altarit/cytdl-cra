@@ -1,0 +1,39 @@
+.OnOffSwitch {
+  position: relative;
+  width: 42px;
+  height: 20px;
+}
+
+
+.OnOffSwitch_outter {
+  display: block;
+  height: 20px;
+  cursor: pointer;
+  padding: 0;
+  border: 2px solid #E3E3E3;
+  border-radius: 100vh;
+  background-color: #bfc2ba;
+  transition: background-color 0.3s ease-in;
+}
+
+.OnOffSwitch__checked > .OnOffSwitch_outter {
+  background-color: #29c214;
+}
+
+.OnOffSwitch_inner {
+  position: absolute;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #FFFFFF;
+  top: 0;
+  bottom: 0;
+  left: 2px;
+  border: 2px solid #E3E3E3;
+  border-radius: 36px;
+  transition: left 0.3s ease-in 0s;
+}
+
+.OnOffSwitch__checked > .OnOffSwitch_inner {
+  left: 16px;
+}
