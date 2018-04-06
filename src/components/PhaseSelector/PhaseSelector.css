@@ -1,3 +1,19 @@
 .PhaseSelector {
+}
 
+.PhaseSelector_phases-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.PhaseSelector_phases-list > li {
+  list-style-type: none;
+  flex: 0 0;
+  cursor: default;
+}
+
+.PhaseSelector_control {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
