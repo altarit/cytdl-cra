@@ -1,0 +1,26 @@
+.PreviewEntry {
+  height: 70px;
+  margin: 10px;
+  background: aliceblue;
+  display: flex;
+}
+
+.PreviewEntry_tumbler {
+  flex: 0 0 40px;
+  background: #6f23cc;
+}
+
+.PreviewEntry_thumbnail {
+  flex: 0 0 50px;
+  background: #bbeeee;
+}
+
+.PreviewEntry_info {
+  flex: 1 1 auto;
+  background: antiquewhite;
+}
+
+.PreviewEntry_status {
+  flex: 0 0 30px;
+  background: #9999cc;
+}
