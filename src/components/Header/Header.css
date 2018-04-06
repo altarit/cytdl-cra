@@ -1,10 +1,10 @@
 .Header {
   background-color: #222;
-  height: 80px;
-  padding: 20px;
+  padding: 10px 0;
   color: white;
   text-align: center;
   width: 100%;
+  flex: 0 0 80px;
 }
 
 .Header_logo {

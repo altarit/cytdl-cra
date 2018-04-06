@@ -1,4 +1,5 @@
 .PhaseSelector {
+  flex: 0 0 150px;
 }
 
 .PhaseSelector_phases-list {
