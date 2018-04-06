@@ -7,6 +7,7 @@ import Screens from '../../Screens'
 class PhaseSelector extends Component {
   static propTypes = {
     currentPhaseId: PropTypes.number.isRequired,
+    previousPhaseId: PropTypes.number.isRequired,
 
     changePhase: PropTypes.func.isRequired
   }
