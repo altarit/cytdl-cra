@@ -8,6 +8,7 @@ class PhaseSelector extends Component {
   static propTypes = {
     currentPhaseId: PropTypes.number.isRequired,
     previousPhaseId: PropTypes.number.isRequired,
+    frozen: PropTypes.bool.isRequired,
 
     changePhase: PropTypes.func.isRequired
   }
@@ -36,6 +37,8 @@ class PhaseSelector extends Component {
   selectPhaseResult = () => this.props.changePhase(3)
 
   render() {
+    let frozen = this.props.frozen
+
     return (
       <div className='PhaseSelector'>
         <ul className='PhaseSelector_phases-list'>
@@ -45,8 +48,8 @@ class PhaseSelector extends Component {
           <li onClick={this.selectPhaseResult}>IV</li>
         </ul>
         <div className='PhaseSelector_control'>
-          <button onClick={this.handleLeft}>Left</button>
-          <button onClick={this.handleRight}>Right</button>
+          <button onClick={this.handleLeft} disabled={frozen}>Back</button>
+          <button onClick={this.handleRight} disabled={frozen}>Next</button>
         </div>
       </div>
     )

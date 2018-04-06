@@ -9,7 +9,8 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   currentPhaseId: state.phaseSelector.currentPhaseId,
-  previousPhaseId: state.phaseSelector.previousPhaseId
+  previousPhaseId: state.phaseSelector.previousPhaseId,
+  frozen: state.phaseSelector.frozen
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhaseSelectorContainer)
