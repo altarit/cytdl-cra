@@ -9,6 +9,7 @@ class PhaseSelector extends Component {
     currentPhaseId: PropTypes.number.isRequired,
     previousPhaseId: PropTypes.number.isRequired,
     frozen: PropTypes.bool.isRequired,
+    screensCompletion: PropTypes.array.isRequired,
 
     changePhase: PropTypes.func.isRequired
   }
@@ -38,18 +39,25 @@ class PhaseSelector extends Component {
 
   render() {
     let frozen = this.props.frozen
+    let currentId = this.props.currentPhaseId
+    let completedScreens = this.props.screensCompletion
+
+    let isCurrentCompleted = completedScreens[currentId]
+    let completedInput = completedScreens[0]
+    let completedPreview = completedInput && completedScreens[1]
+    let completedProcessing = completedPreview && completedScreens[2]
 
     return (
       <div className='PhaseSelector'>
         <ul className='PhaseSelector_phases-list'>
-          <li onClick={this.selectPhaseInput}>I</li>
-          <li onClick={this.selectPhaseReview}>II</li>
-          <li onClick={this.selectPhaseProcessing}>III</li>
-          <li onClick={this.selectPhaseResult}>IV</li>
+          <button onClick={this.selectPhaseInput}>I</button>
+          <button disabled={currentId < 1 && !completedInput} onClick={this.selectPhaseReview}>II</button>
+          <button disabled={currentId < 2 && !completedPreview} onClick={this.selectPhaseProcessing}>III</button>
+          <button disabled={currentId < 3 && !completedProcessing} onClick={this.selectPhaseResult}>IV</button>
         </ul>
         <div className='PhaseSelector_control'>
-          <button onClick={this.handleLeft} disabled={frozen}>Back</button>
-          <button onClick={this.handleRight} disabled={frozen}>Next</button>
+          <button onClick={this.handleLeft} disabled={frozen || currentId === 0}>Back</button>
+          <button onClick={this.handleRight} disabled={frozen || currentId === 3 || !isCurrentCompleted}>Next</button>
         </div>
       </div>
     )

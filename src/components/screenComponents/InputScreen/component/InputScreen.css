@@ -5,6 +5,11 @@
   flex: 0 0 70px;
 }
 
+.InputScreen_description {
+  display: flex;
+  justify-content: space-between;
+}
+
 .InputScreen_footer {
   margin-top: 10px;
   flex: 0 0 20px;
@@ -21,4 +26,5 @@
   border: solid 1px #222222;
   overflow-y: scroll;
   overflow-x: hidden;
+  resize: none;
 }
