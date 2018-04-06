@@ -12,11 +12,13 @@ class PreviewScreen extends Component {
 
     mapLinksToPreviews: PropTypes.func.isRequired,
     togglePreview: PropTypes.func.isRequired,
+    sendPreviewRequest: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
     console.log('PreviewScreen.componentDidMount')
     this.props.mapLinksToPreviews(this.props.links)
+    this.props.sendPreviewRequest(this.props.links)
   }
 
   render() {

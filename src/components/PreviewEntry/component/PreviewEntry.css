@@ -1,6 +1,6 @@
 .PreviewEntry {
-  height: 70px;
-  margin: 10px;
+  height: 64px;
+  margin-bottom: 10px;
   background: aliceblue;
   display: flex;
 }
@@ -14,13 +14,33 @@
 }
 
 .PreviewEntry_thumbnail {
-  flex: 0 0 50px;
+  flex: 0 0 80px;
   background: #bbeeee;
 }
 
 .PreviewEntry_info {
   flex: 1 1 auto;
   background: antiquewhite;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.PreviewEntry_link {
+  height: 18px;
+  line-height: 18px;
+}
+
+.PreviewEntry_title {
+  font-weight: 400;
+  font-size: 20px;
+  height: 28px;
+  line-height: 28px;
+}
+
+.PreviewEntry_progressbar {
+  background: #779977;
+  height: 18px;
+  line-height: 18px;
 }
 
 .PreviewEntry_status {

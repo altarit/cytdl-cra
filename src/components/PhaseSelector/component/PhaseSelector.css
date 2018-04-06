@@ -5,6 +5,7 @@
 .PhaseSelector_phases-list {
   display: flex;
   justify-content: space-around;
+  padding-left: 0;
 }
 
 .PhaseSelector_phases-list > li {

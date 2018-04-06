@@ -25,10 +25,11 @@ class PreviewEntry extends Component {
         <div className='PreviewEntry_thumbnail'>
         </div>
         <div className='PreviewEntry_info'>
-          {entry.url}
+          <div className='PreviewEntry_link'><a href={entry.url} target='_blank'>{entry.url}</a></div>
+          <div className='PreviewEntry_title'>{entry.title}</div>
+          <div className='PreviewEntry_progressbar'>Status: {entry.status.name}</div>
         </div>
         <div className='PreviewEntry_status'>
-          {entry.status}
         </div>
       </div>
     )
