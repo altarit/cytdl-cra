@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import phaseSelectorReducer from '../components/PhaseSelector/phaseSelectorModule'
+import phaseSelectorReducer from './components/PhaseSelector/module/phaseSelector'
 
 export default combineReducers({
   phaseSelector: phaseSelectorReducer

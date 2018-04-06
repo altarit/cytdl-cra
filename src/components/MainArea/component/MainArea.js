@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 
 import './MainArea.css'
-import ScreenContainer from '../ScreenContainer/ScreenContainer'
-import PhaseSelector from '../PhaseSelector/PhaseSelector'
+import Screens from '../../Screens'
+import PhaseSelector from '../../PhaseSelector'
 
 class MainArea extends Component {
   constructor(props) {
@@ -19,11 +19,11 @@ class MainArea extends Component {
 
   render() {
     const toLeft = this.state.currentPhaseId < this.state.previousPhaseId
-    const phase = ScreenContainer.PHASES[this.state.currentPhaseId]
+    const phase = Screens.PHASES[this.state.currentPhaseId]
 
     return (
       <div className='MainArea'>
-        <ScreenContainer toLeft={toLeft} phase={phase}/>
+        <Screens toLeft={toLeft} phase={phase}/>
         <PhaseSelector changePhase={this.changePhase} currentPhaseId={this.state.currentPhaseId}/>
       </div>
     )

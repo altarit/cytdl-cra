@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-import './ScreenContainer.css'
-import InputScreen from '../screenComponents/InputScreen/InputScreen'
-import PreviewScreen from '../screenComponents/PreviewScreen/PreviewScreen'
-import ProcessingScreen from '../screenComponents/ProcessingScreen/ProcessingScreen'
-import ResultScreen from '../screenComponents/ResultScreen/ResultScreen'
+import './Screens.css'
+import InputScreen from '../../screenComponents/InputScreen/InputScreen'
+import PreviewScreen from '../../screenComponents/PreviewScreen/PreviewScreen'
+import ProcessingScreen from '../../screenComponents/ProcessingScreen/ProcessingScreen'
+import ResultScreen from '../../screenComponents/ResultScreen/ResultScreen'
 
-class ScreenContainer extends Component {
+class Screens extends Component {
   static PHASES = [{
     name: 'INPUT',
     id: 0,
@@ -33,12 +33,12 @@ class ScreenContainer extends Component {
   render() {
     let phase = this.props.phase
     return (
-      <div className={'ScreenContainer' + (this.props.toLeft ? ' left' : ' right')}>
+      <div className={'Screens' + (this.props.toLeft ? ' left' : ' right')}>
         <ReactCSSTransitionGroup
           transitionName='carousel'
           transitionEnterTimeout={600}
           transitionLeaveTimeout={600}>
-          <div key={phase.id} className='ScreenContainer_box'>
+          <div key={phase.id} className='Screens_box'>
             {this.getActiveScreen(phase)}
           </div>
         </ReactCSSTransitionGroup>
@@ -47,4 +47,4 @@ class ScreenContainer extends Component {
   }
 }
 
-export default ScreenContainer
+export default Screens

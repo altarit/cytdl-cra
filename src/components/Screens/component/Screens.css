@@ -1,4 +1,4 @@
-.ScreenContainer {
+.Screens {
   background: #bbeeee;
   width: 100%;
   overflow-x: hidden;
@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-.ScreenContainer > span {
+.Screens > span {
   position: relative;
   width: 100%;
   background: #9999cc;
@@ -15,7 +15,7 @@
   flex: 1 1 auto;
 }
 
-.ScreenContainer_box {
+.Screens_box {
   position: absolute;
   left: 0;
   top: 0;
@@ -25,32 +25,32 @@
   overflow-x: hidden;
 }
 
-.left .ScreenContainer_box.carousel-enter {
+.left .Screens_box.carousel-enter {
   left: -100%;
 }
 
-.right .ScreenContainer_box.carousel-enter {
+.right .Screens_box.carousel-enter {
   left: 100%;
 }
 
-.ScreenContainer_box.carousel-enter.carousel-enter-active {
+.Screens_box.carousel-enter.carousel-enter-active {
   left: 0;
   transition: left 500ms ease-in;
 }
 
-.ScreenContainer_box.carousel-leave {
+.Screens_box.carousel-leave {
   left: 0;
 }
 
-.ScreenContainer_box.carousel-leave.carousel-leave-active {
+.Screens_box.carousel-leave.carousel-leave-active {
   transition: left 500ms ease-in;
 }
 
-.left .ScreenContainer_box.carousel-leave.carousel-leave-active {
+.left .Screens_box.carousel-leave.carousel-leave-active {
   left: 100%;
 }
 
-.right .ScreenContainer_box.carousel-leave.carousel-leave-active {
+.right .Screens_box.carousel-leave.carousel-leave-active {
   left: -100%;
 }
 

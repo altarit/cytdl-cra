@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 import './PhaseSelector.css'
-import ScreenContainer from '../ScreenContainer/ScreenContainer'
+import Screens from '../../Screens'
 
 class PhaseSelector extends Component {
   static propTypes = {
@@ -22,7 +22,7 @@ class PhaseSelector extends Component {
 
   handleRight = () => {
     let phaseId = this.props.currentPhaseId
-    if (phaseId + 1 === ScreenContainer.PHASES.length) {
+    if (phaseId + 1 === Screens.PHASES.length) {
       return
     }
 
