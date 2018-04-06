@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import './Screens.css'
-import InputScreen from '../../screenComponents/InputScreen/InputScreen'
-import PreviewScreen from '../../screenComponents/PreviewScreen/PreviewScreen'
-import ProcessingScreen from '../../screenComponents/ProcessingScreen/ProcessingScreen'
-import ResultScreen from '../../screenComponents/ResultScreen/ResultScreen'
+import InputScreen from '../../screenComponents/InputScreen'
+import PreviewScreen from '../../screenComponents/PreviewScreen'
+import ProcessingScreen from '../../screenComponents/ProcessingScreen'
+import ResultScreen from '../../screenComponents/ResultScreen'
 
 class Screens extends Component {
   static PHASES = [{

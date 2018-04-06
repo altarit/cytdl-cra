@@ -1,6 +1,14 @@
 import { combineReducers } from 'redux'
-import phaseSelectorReducer from './components/PhaseSelector/module/phaseSelector'
+import phaseSelector from './components/PhaseSelector/module/phaseSelector'
+import inputScreen from './components/screenComponents/InputScreen/module/inputScreen'
+import previewScreen from './components/screenComponents/PreviewScreen/module/previewScreen'
+import processingScreen from './components/screenComponents/ProcessingScreen/module/processingScreen'
+import resultScreen from './components/screenComponents/ResultScreen/module/inputScreen'
 
 export default combineReducers({
-  phaseSelector: phaseSelectorReducer
+  phaseSelector,
+  inputScreen,
+  previewScreen,
+  processingScreen,
+  resultScreen,
 })
