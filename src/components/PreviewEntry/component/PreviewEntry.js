@@ -9,10 +9,15 @@ class PreviewEntry extends Component {
     entry: PropTypes.object.isRequired,
 
     togglePreview: PropTypes.func.isRequired,
+    startProcessing: PropTypes.func.isRequired,
   }
 
   togglePreview = (newValue) => {
     this.props.togglePreview(this.props.entry.id, newValue)
+  }
+
+  startProcessing = () => {
+    this.props.startProcessing(this.props.entry)
   }
 
   render() {
@@ -30,6 +35,7 @@ class PreviewEntry extends Component {
           <div className='PreviewEntry_progressbar'>Status: {entry.status.name}</div>
         </div>
         <div className='PreviewEntry_status'>
+          <button onClick={this.startProcessing}>S</button>
         </div>
       </div>
     )

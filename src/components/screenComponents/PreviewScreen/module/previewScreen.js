@@ -1,6 +1,7 @@
 const PREVIEW_SCREEN_MAP_LINKS_TO_PREVIEWS = 'PREVIEW_SCREEN_MAP_LINKS_TO_PREVIEWS'
 const PREVIEW_SCREEN_TOGGLE_PREVIEW = 'PREVIEW_SCREEN_TOGGLE_PREVIEW'
 const PREVIEW_SCREEN_PREVIEW_WS_REQUEST = 'PREVIEW_SCREEN_PREVIEW_WS_REQUEST'
+const PREVIEW_SCREEN_PREVIEW_WS_PROCESS = 'PREVIEW_SCREEN_PREVIEW_WS_PROCESS'
 const PREVIEW_SCREEN_PREVIEW_WS_UPDATE = 'PREVIEW_SCREEN_PREVIEW_WS_UPDATE'
 
 export function mapLinksToPreviews(links) {
@@ -35,6 +36,14 @@ export function sendPreviewRequest(previews) {
   }
 }
 
+export function startProcessing(entry) {
+  return {
+    type: PREVIEW_SCREEN_PREVIEW_WS_PROCESS,
+    entry,
+    ws: 'request_downloading'
+  }
+}
+
 const initialState = {
   isCompleted: false,
   previews: [],
@@ -50,7 +59,10 @@ const handlers = {
   },
   [PREVIEW_SCREEN_TOGGLE_PREVIEW]: (state, action) => {
     let nextPreviews = [...state.previews]
-    nextPreviews[action.id] = {...nextPreviews[action.id], enabled: action.value}
+    nextPreviews[action.id] = {
+      ...nextPreviews[action.id],
+      enabled: action.value
+    }
     return {
       ...state,
       previews: nextPreviews,
@@ -58,11 +70,15 @@ const handlers = {
   },
   [PREVIEW_SCREEN_PREVIEW_WS_UPDATE]: (state, action) => {
     let nextPreviews = [...state.previews]
-    nextPreviews[action.id] = {
-      ...nextPreviews[action.id],
-      title: action.title,
-      author: action.author,
-      status: action.status,
+    for(let preview of action.previews) {
+      nextPreviews[preview.id] = {
+        ...state.previews[preview.id],
+        title: preview.title,
+        author: preview.author,
+        status: preview.status,
+        requestId: preview.requestId,
+        format: preview.format,
+      }
     }
     return {
       ...state,

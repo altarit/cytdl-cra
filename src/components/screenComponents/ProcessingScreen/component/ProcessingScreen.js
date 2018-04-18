@@ -6,7 +6,9 @@ class ProcessingScreen extends Component {
   render() {
     return (
       <div className='ProcessingScreen Screen'>
-        ProcessingScreen
+        <div className='ProcessingScreen_header'>
+          <h2>ProcessingScreen</h2>
+        </div>
       </div>
     )
   }
