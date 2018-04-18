@@ -28,6 +28,11 @@ class PreviewEntry extends Component {
           <OnOffSwitch onChange={this.togglePreview} checked={entry.enabled}/>
         </div>
         <div className='PreviewEntry_thumbnail'>
+          <a href={entry.url} target='_blank'>
+            {entry.thumbnail ? (
+              <img src={entry.thumbnail} width='100%'/>
+            ) : <p>'None'</p>}
+          </a>
         </div>
         <div className='PreviewEntry_info'>
           <div className='PreviewEntry_link'><a href={entry.url} target='_blank'>{entry.url}</a></div>
@@ -35,7 +40,12 @@ class PreviewEntry extends Component {
           <div className='PreviewEntry_progressbar'>Status: {entry.status.name}</div>
         </div>
         <div className='PreviewEntry_status'>
-          <button onClick={this.startProcessing}>S</button>
+          {entry.status.id === 3 ? (
+            <button onClick={this.startProcessing}>S</button>
+          ) : null}
+          {entry.href ? (
+            <a href={entry.href} download>D</a>
+          ) : null}
         </div>
       </div>
     )

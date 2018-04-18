@@ -78,6 +78,8 @@ const handlers = {
         status: preview.status,
         requestId: preview.requestId,
         format: preview.format,
+        href: preview.href,
+        thumbnail: preview.thumbnail,
       }
     }
     return {
