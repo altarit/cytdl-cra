@@ -70,17 +70,14 @@ const handlers = {
   },
   [PREVIEW_SCREEN_PREVIEW_WS_UPDATE]: (state, action) => {
     let nextPreviews = [...state.previews]
-    for(let preview of action.previews) {
-      nextPreviews[preview.id] = {
-        ...state.previews[preview.id],
-        title: preview.title,
-        author: preview.author,
-        status: preview.status,
-        requestId: preview.requestId,
-        format: preview.format,
-        href: preview.href,
-        thumbnail: preview.thumbnail,
+    for(let actionPreview of action.previews) {
+      let nextPreview = {...state.previews[actionPreview.id]}
+      for(let key of Object.keys(actionPreview)) {
+        if (actionPreview[key]) {
+          nextPreview[key] = actionPreview[key]
+        }
       }
+      nextPreviews[actionPreview.id] = nextPreview
     }
     return {
       ...state,
