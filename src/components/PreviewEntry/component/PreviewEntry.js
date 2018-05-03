@@ -37,7 +37,7 @@ class PreviewEntry extends Component {
         <div className='PreviewEntry_info'>
           <div className='PreviewEntry_link'><a href={entry.url} target='_blank'>{entry.url}</a></div>
           <div className='PreviewEntry_title'>{entry.title}</div>
-          <div className='PreviewEntry_progressbar'>Status: {entry.status.name}</div>
+          <div className='PreviewEntry_progressbar'>Status: {entry.statusText || entry.status.name}</div>
         </div>
         <div className='PreviewEntry_status'>
           {entry.status.id === 3 ? (
