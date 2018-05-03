@@ -5,7 +5,8 @@ import openSocket from 'socket.io-client'
 import rootReducer from './reducer'
 import socketMiddleware from './middlewares/websocketMiddleware'
 
-const socket = openSocket(document.location.href)
+//const socket = openSocket(document.location.href)
+const socket = openSocket(`:3500`)
 
 const initialState = {}
 const enhancers = []

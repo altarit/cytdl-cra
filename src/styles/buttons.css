@@ -22,3 +22,9 @@
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
+
+.btn-small {
+  font-size: 12px;
+  border-radius: 6px;
+  padding: 2px 4px 2px 4px;
+}

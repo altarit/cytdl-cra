@@ -9,7 +9,7 @@ export function mapLinksToPreviews(links) {
     return {
       id: i,
       url: el,
-      title: 'title',
+      title: '',
       enabled: true,
       status: {id: 0, name: 'Initialized.'},
     }

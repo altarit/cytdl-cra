@@ -12,8 +12,8 @@ class PreviewEntry extends Component {
     startProcessing: PropTypes.func.isRequired,
   }
 
-  togglePreview = (newValue) => {
-    this.props.togglePreview(this.props.entry.id, newValue)
+  remove = (newValue) => {
+    this.props.togglePreview(this.props.entry.id, false)
   }
 
   startProcessing = () => {
@@ -23,10 +23,7 @@ class PreviewEntry extends Component {
   render() {
     let entry = this.props.entry
     return (
-      <div className='PreviewEntry'>
-        <div className='PreviewEntry_tumbler'>
-          <OnOffSwitch onChange={this.togglePreview} checked={entry.enabled}/>
-        </div>
+      <div className={'PreviewEntry' + (entry.enabled ? '' : ' PreviewEntry__disabled')}>
         <div className='PreviewEntry_thumbnail'>
           <a href={entry.url} target='_blank'>
             {entry.thumbnail ? (
@@ -35,17 +32,21 @@ class PreviewEntry extends Component {
           </a>
         </div>
         <div className='PreviewEntry_info'>
-          <div className='PreviewEntry_link'><a href={entry.url} target='_blank'>{entry.url}</a></div>
-          <div className='PreviewEntry_title'>{entry.title}</div>
-          <div className='PreviewEntry_progressbar'>Status: {entry.statusText || entry.status.name}</div>
-        </div>
-        <div className='PreviewEntry_status'>
-          {entry.status.id === 3 ? (
-            <button onClick={this.startProcessing}>S</button>
-          ) : null}
-          {entry.href ? (
-            <a href={entry.href} download>D</a>
-          ) : null}
+          {!entry.title ? (
+            <div className='PreviewEntry_link'><a href={entry.url} target='_blank'>{entry.url}</a></div>
+          ) : (
+            <div className='PreviewEntry_title'>{entry.title}</div>
+          )}
+          <div className='PreviewEntry_progressbar'>{entry.statusText || entry.status.name}</div>
+          <div className='PreviewEntry_control'>
+            {entry.status.id === 3 ? (
+              <button onClick={this.startProcessing}>S</button>
+            ) : null}
+            {entry.href ? (
+              <a className='btn btn-small' href={entry.href} download>Download</a>
+            ) : null}
+            <button className='btn btn-small' onClick={this.remove}>Remove</button>
+          </div>
         </div>
       </div>
     )

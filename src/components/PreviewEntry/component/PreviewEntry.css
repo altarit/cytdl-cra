@@ -1,16 +1,9 @@
 .PreviewEntry {
-  height: 64px;
+  height: 62px;
   margin-bottom: 10px;
   background: aliceblue;
   display: flex;
-}
-
-.PreviewEntry_tumbler {
-  flex: 0 0 40px;
-  background: #6f23cc;
-  display: flex;
-  align-items: center;
-  padding: 4px;
+  overflow: hidden;
 }
 
 .PreviewEntry_thumbnail {
@@ -22,28 +15,37 @@
   flex: 1 1 auto;
   background: antiquewhite;
   white-space: nowrap;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .PreviewEntry_link {
-  height: 18px;
-  line-height: 18px;
+  font-size: 18px;
+  height: 20px;
+  line-height: 20px;
 }
 
 .PreviewEntry_title {
   font-weight: 400;
-  font-size: 20px;
-  height: 28px;
-  line-height: 28px;
+  font-size: 18px;
+  height: 20px;
+  line-height: 20px;
 }
 
 .PreviewEntry_progressbar {
   background: #779977;
+  font-size: 16px;
   height: 18px;
   line-height: 18px;
 }
 
-.PreviewEntry_status {
+.PreviewEntry_control {
   flex: 0 0 30px;
   background: #9999cc;
+  height: 24px;
+  line-height: 24px;
+}
+
+.PreviewEntry__disabled {
+  height: 0;
+  transition: height 0.3s ease-in 0s;
 }
