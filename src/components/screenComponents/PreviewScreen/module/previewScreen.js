@@ -72,11 +72,21 @@ const handlers = {
     let nextPreviews = [...state.previews]
     for(let actionPreview of action.previews) {
       let nextPreview = {...state.previews[actionPreview.id]}
+
+      let tempPreview = null
+      if (actionPreview.subId !== undefined && actionPreview.subId !== null) {
+        tempPreview = {...nextPreview.children[actionPreview.subId]}
+        nextPreview.children[actionPreview.subId] = tempPreview
+      } else {
+        tempPreview = nextPreview
+      }
+
       for(let key of Object.keys(actionPreview)) {
         if (actionPreview[key]) {
-          nextPreview[key] = actionPreview[key]
+          tempPreview[key] = actionPreview[key]
         }
       }
+
       nextPreviews[actionPreview.id] = nextPreview
     }
     return {

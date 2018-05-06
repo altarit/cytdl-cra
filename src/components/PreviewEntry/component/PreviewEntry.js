@@ -43,7 +43,7 @@ class PreviewEntry extends Component {
                 <button onClick={this.startProcessing}>S</button>
               ) : null}
               {entry.href ? (
-                <a className='btn btn-small' href={'http://localhost:80/' + entry.href} target='_blank'
+                <a className='btn btn-small' href={'http://localhost:3002/' + entry.href} target='_blank'
                    download>Download</a>
               ) : null}
               <button className='btn btn-small' onClick={this.remove}>Remove</button>
@@ -51,9 +51,9 @@ class PreviewEntry extends Component {
           </div>
         </div>
         {entry.children ? entry.children.map(el =>
-          <PreviewEntry key={el.id} entry={el}
+          <PreviewEntry key={el.id + '/' + el.subId} entry={el}
                         togglePreview={()=>{}}
-                        startProcessing={()=>{}}/>
+                        startProcessing={this.props.startProcessing}/>
         ) : null}
       </div>
     )
