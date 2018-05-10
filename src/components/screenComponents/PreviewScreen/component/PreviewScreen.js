@@ -14,6 +14,8 @@ class PreviewScreen extends Component {
     togglePreview: PropTypes.func.isRequired,
     sendPreviewRequest: PropTypes.func.isRequired,
     startProcessing: PropTypes.func.isRequired,
+    selectFormat: PropTypes.func.isRequired,
+    openFormatsPopup: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -32,7 +34,9 @@ class PreviewScreen extends Component {
           {this.props.previews.map(el =>
             <PreviewEntry key={el.id} entry={el}
                           togglePreview={this.props.togglePreview}
-                          startProcessing={this.props.startProcessing}/>
+                          startProcessing={this.props.startProcessing}
+                          selectFormat={this.props.selectFormat}
+                          openFormatsPopup={this.props.openFormatsPopup}/>
           )}
         </div>
       </div>

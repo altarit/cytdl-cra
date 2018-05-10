@@ -1,0 +1,18 @@
+.FormatSelect {
+}
+
+.FormatSelect_selected {
+  background: #29c214;
+  width: 120px;
+}
+
+.FormatSelect_options-popup {
+  position: absolute;
+}
+
+.FormatSelect_options {
+  position: absolute;
+  width: 200px;
+  background: #3498db;
+  z-index: 9999;
+}

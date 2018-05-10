@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
+import FormatSelect from './FormatSelect'
 import './PreviewEntry.css'
 
 class PreviewEntry extends Component {
@@ -9,6 +10,8 @@ class PreviewEntry extends Component {
 
     togglePreview: PropTypes.func.isRequired,
     startProcessing: PropTypes.func.isRequired,
+    selectFormat: PropTypes.func.isRequired,
+    openFormatsPopup: PropTypes.func.isRequired,
   }
 
   remove = (newValue) => {
@@ -17,6 +20,14 @@ class PreviewEntry extends Component {
 
   startProcessing = () => {
     this.props.startProcessing(this.props.entry)
+  }
+
+  changeFormat = (format) => {
+    this.props.selectFormat(this.props.entry.id, this.props.entry.subId, format)
+  }
+
+  openFormatsPopup = () => {
+    this.props.openFormatsPopup(this.props.entry.id, this.props.entry.subId)
   }
 
   render() {
@@ -39,21 +50,30 @@ class PreviewEntry extends Component {
             )}
             <div className='PreviewEntry_progressbar'>{entry.statusText || entry.status.name}</div>
             <div className='PreviewEntry_control'>
-              {entry.status.id === 3 ? (
-                <button onClick={this.startProcessing}>S</button>
-              ) : null}
-              {entry.href ? (
-                <a className='btn btn-small' href={'http://localhost:3002/' + entry.href} target='_blank'
-                   download>Download</a>
-              ) : null}
-              <button className='btn btn-small' onClick={this.remove}>Remove</button>
+              <div className='PreviewEntry_control-left'>
+                {entry.status.id === 3 && entry.formats ? (
+                  <FormatSelect formats={entry.formats} selected={entry.format}
+                                isPopupOpen={entry.isFormatsPopupOpen}
+                                onChange={this.changeFormat} onPopupToggle={this.openFormatsPopup}/>
+                ) : null}
+                <button onClick={this.startProcessing} disabled={!entry.format}>Download</button>
+                {entry.href ? (
+                  <a className='btn btn-small' href={'http://localhost:3002/' + entry.href} target='_blank'
+                     download>Download</a>
+                ) : null}
+              </div>
+              <div className='PreviewEntry_control-right'>
+                <button className='btn btn-small' onClick={this.remove}>Remove</button>
+              </div>
             </div>
           </div>
         </div>
         {entry.children ? entry.children.map(el =>
-          <PreviewEntry key={el.id + '/' + el.subId} entry={el}
-                        togglePreview={()=>{}}
-                        startProcessing={this.props.startProcessing}/>
+          <PreviewEntry key={el.id + '-' + el.subId} entry={el}
+                        togglePreview={console.log}
+                        startProcessing={this.props.startProcessing}
+                        selectFormat={this.props.selectFormat}
+                        openFormatsPopup={this.props.openFormatsPopup}/>
         ) : null}
       </div>
     )

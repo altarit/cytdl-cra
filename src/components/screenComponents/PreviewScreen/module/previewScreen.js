@@ -3,6 +3,8 @@ const PREVIEW_SCREEN_TOGGLE_PREVIEW = 'PREVIEW_SCREEN_TOGGLE_PREVIEW'
 const PREVIEW_SCREEN_PREVIEW_WS_REQUEST = 'PREVIEW_SCREEN_PREVIEW_WS_REQUEST'
 const PREVIEW_SCREEN_PREVIEW_WS_PROCESS = 'PREVIEW_SCREEN_PREVIEW_WS_PROCESS'
 const PREVIEW_SCREEN_PREVIEW_WS_UPDATE = 'PREVIEW_SCREEN_PREVIEW_WS_UPDATE'
+const PREVIEW_SCREEN_SELECT_FORMAT = 'PREVIEW_SCREEN_SELECT_FORMAT'
+const PREVIEW_SCREEN_OPEN_FORMATS_POPUP = 'PREVIEW_SCREEN_OPEN_FORMATS_POPUP'
 
 export function mapLinksToPreviews(links) {
   let previews = links.map((el, i) => {
@@ -25,6 +27,23 @@ export function togglePreview(id, value) {
     type: PREVIEW_SCREEN_TOGGLE_PREVIEW,
     id,
     value,
+  }
+}
+
+export function selectFormat(id, subId, format) {
+  return {
+    type: PREVIEW_SCREEN_SELECT_FORMAT,
+    id,
+    subId,
+    format,
+  }
+}
+
+export function openFormatsPopup(id, subId) {
+  return {
+    type: PREVIEW_SCREEN_OPEN_FORMATS_POPUP,
+    id,
+    subId,
   }
 }
 
@@ -55,6 +74,48 @@ const handlers = {
       ...state,
       previews: action.previews,
       isCompleted: false,
+    }
+  },
+  [PREVIEW_SCREEN_SELECT_FORMAT]: (state, action) => {
+    let nextPreviews = [...state.previews]
+    let nextPreview = {...state.previews[action.id]}
+
+    if (action.subId !== undefined && action.subId !== null) {
+      let nextSubPreview = {
+        ...nextPreview.children[action.subId],
+        format: action.format,
+        isFormatsPopupOpen: false,
+      }
+      nextPreview.children[action.subId] = nextSubPreview
+    } else {
+      nextPreview.format = action.format
+      nextPreview.isFormatsPopupOpen = false
+    }
+
+    nextPreviews[action.id] = nextPreview
+    return {
+      ...state,
+      previews: nextPreviews,
+    }
+  },
+  [PREVIEW_SCREEN_OPEN_FORMATS_POPUP]: (state, action) => {
+    let nextPreviews = [...state.previews]
+    let nextPreview = {...state.previews[action.id]}
+
+    if (action.subId !== undefined && action.subId !== null) {
+      let nextSubPreview = {
+        ...nextPreview.children[action.subId],
+        isFormatsPopupOpen: !nextPreview.children[action.subId].isFormatsPopupOpen
+      }
+      nextPreview.children[action.subId] = nextSubPreview
+    } else {
+      nextPreview.isFormatsPopupOpen = !action.isFormatsPopupOpen
+    }
+
+    nextPreviews[action.id] = nextPreview
+    return {
+      ...state,
+      previews: nextPreviews,
     }
   },
   [PREVIEW_SCREEN_TOGGLE_PREVIEW]: (state, action) => {

@@ -60,6 +60,19 @@
   background: #9999cc;
   height: 26px;
   line-height: 26px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.PreviewEntry_control-left {
+  display: flex;
+  height: 100%;
+}
+
+.PreviewEntry_control-right {
+  display: flex;
+  height: 100%;
 }
 
 .PreviewEntry__disabled {

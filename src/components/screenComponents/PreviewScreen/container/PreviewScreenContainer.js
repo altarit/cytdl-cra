@@ -1,13 +1,22 @@
 import {connect} from 'react-redux'
 
 import PreviewScreen from '../component/PreviewScreen'
-import {mapLinksToPreviews, togglePreview, sendPreviewRequest, startProcessing} from '../module/previewScreen'
+import {
+  mapLinksToPreviews,
+  togglePreview,
+  sendPreviewRequest,
+  startProcessing,
+  selectFormat,
+  openFormatsPopup,
+} from '../module/previewScreen'
 
 const mapDispatchToProps = {
   mapLinksToPreviews,
   togglePreview,
   sendPreviewRequest,
   startProcessing,
+  selectFormat,
+  openFormatsPopup,
 }
 
 const mapStateToProps = (state) => ({
