@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-import './FormatSelect.css'
+import './DefaultFormatSelect.css'
 
-class FormatSelect extends Component {
+class DefaultFormatSelect extends Component {
   static propTypes = {
     formats: PropTypes.array.isRequired,
     selected: PropTypes.object,
@@ -16,18 +16,18 @@ class FormatSelect extends Component {
   render() {
     let formats = this.props.formats
     return (
-      <div className='FormatSelect'>
-        <div className='FormatSelect_selected' onClick={this.props.onPopupToggle}>
+      <div className='DefaultFormatSelect'>
+        <div className='DefaultFormatSelect_selected' onClick={this.props.onPopupToggle}>
           {this.props.selected
-            ? this.props.selected.ext + ' - ' + this.props.selected.format
+            ? this.props.selected.format
             : 'Select format...'}
         </div>
-        <div className='FormatSelect_options-popup'>
+        <div className='DefaultFormatSelect_options-popup'>
           {this.props.isPopupOpen ? (
-            <div className='FormatSelect_options'>
+            <div className='DefaultFormatSelect_options'>
               {formats.map(f =>
                 <div key={f.format_id} onClick={this.props.onChange.bind(null, f)}>
-                  {f.ext + ' - ' + f.format}
+                  {f.format}
                 </div>
               )}
             </div>
@@ -38,4 +38,4 @@ class FormatSelect extends Component {
   }
 }
 
-export default FormatSelect
+export default DefaultFormatSelect

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import './PreviewScreen.css'
 import PreviewEntry from '../../../PreviewEntry'
+import DefaultFormatSelect from '../container/DefaultFormatSelectContainer'
 
 class PreviewScreen extends Component {
   static propTypes = {
@@ -29,6 +30,9 @@ class PreviewScreen extends Component {
       <div className='PreviewScreen Screen'>
         <div className='PreviewScreen_header'>
           <h2>PreviewScreen</h2>
+          <div className='PreviewScreen_control'>
+            <DefaultFormatSelect/>
+          </div>
         </div>
         <div className='PreviewScreen_entries'>
           {this.props.previews.map(el =>
