@@ -27,7 +27,9 @@ const initialState = {
   validCount: 0,
   totalCount: 0,
   safeText: '',
-  exampleLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  //exampleLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+  //exampleLink: 'https://tarbyrocks.bandcamp.com/track/the-first-trees',
+  exampleLink: 'https://przewalskisponies.bandcamp.com/album/reroll',
   isHelpOpen: false,
 }
 

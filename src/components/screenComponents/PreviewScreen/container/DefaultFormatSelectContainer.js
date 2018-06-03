@@ -4,7 +4,7 @@ import DefaultFormatSelect from '../component/DefaultFormatSelect'
 import {
   bulkSelectFormat,
   openBulkFormatsPopup,
-} from '../module/previewScreen'
+} from '../module/previewScreenActions'
 
 const mapDispatchToProps = {
   onChange: bulkSelectFormat,

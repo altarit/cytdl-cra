@@ -8,7 +8,7 @@ import {
   startProcessing,
   selectFormat,
   openFormatsPopup,
-} from '../module/previewScreen'
+} from '../module/previewScreenActions'
 
 const mapDispatchToProps = {
   mapLinksToPreviews,
