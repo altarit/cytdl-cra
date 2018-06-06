@@ -14,7 +14,7 @@ const mapStateToProps = (state) => ({
   totalCount: state.inputScreen.totalCount,
   links: state.inputScreen.links,
   safeText: state.inputScreen.safeText,
-  exampleLink: state.inputScreen.exampleLink,
+  exampleLinks: state.inputScreen.exampleLinks,
   isHelpOpen: state.inputScreen.isHelpOpen,
 })
 

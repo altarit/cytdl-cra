@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 import './InputScreen.css'
+import ExampleLink from './ExampleLink'
 
 class InputScreen extends Component {
   static propTypes = {
@@ -10,7 +11,7 @@ class InputScreen extends Component {
     totalCount: PropTypes.number.isRequired,
     links: PropTypes.array.isRequired,
     safeText: PropTypes.string.isRequired,
-    exampleLink: PropTypes.string.isRequired,
+    exampleLinks: PropTypes.arrayOf(PropTypes.string).isRequired,
     isHelpOpen: PropTypes.bool.isRequired,
 
     rescanArea: PropTypes.func.isRequired,
@@ -26,8 +27,8 @@ class InputScreen extends Component {
     this.props.rescanArea(this.refs.area.value)
   }
 
-  useExample = () => {
-    this.refs.area.value = this.props.exampleLink
+  useExample = (link) => {
+    this.refs.area.value += ' ' + link + '\n'
     this.onAreaChange()
   }
 
@@ -37,10 +38,13 @@ class InputScreen extends Component {
         <div className='InputScreen_header'>
           <h2>Add video link</h2>
           <div className='InputScreen_description'>
-            <span className='InputScreen_example' onClick={this.useExample}>
-              e.g.,<b>{this.props.exampleLink}</b>
-            </span>
-            <button className='btn'  onClick={this.props.toggleHelp}>
+            <div>
+              e.g.<br/>
+              {this.props.exampleLinks.map(link =>
+                <ExampleLink onClick={this.useExample} link={link}/>
+              )}
+            </div>
+            <button className='btn' onClick={this.props.toggleHelp}>
               More options
             </button>
           </div>
