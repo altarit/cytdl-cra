@@ -1,12 +1,12 @@
 import * as types from './previewScreenConstants'
 
-export function applyPreferredExts(entry, preferredExts) {
+export function applyPreferredExts (entry, preferredExts) {
   if (!entry.format || !preferredExts.includes(entry.format.ext)) {
     for (let j = 0; j < preferredExts.length; j++) {
       let ext = preferredExts[j]
       let found = entry.formats.find(it => it.ext === ext)
       if (found) {
-        return {...entry, format: {...found}}
+        return { ...entry, format: { ...found } }
       }
     }
     return entry
@@ -40,18 +40,18 @@ const handlers = {
     }
   },
   [types.PREVIEW_SCREEN_SELECT_FORMAT]: (state, action) => {
-    let nextPreviews = [...state.previews]
-    let nextPreview = {...state.previews[action.id]}
+    const nextPreviews = [...state.previews]
+    const nextPreview = { ...state.previews[action.id] }
 
     if (action.subId !== undefined && action.subId !== null) {
-      let nextSubPreview = {
+      const nextSubPreview = {
         ...nextPreview.children[action.subId],
-        format: {...action.format},
+        format: { ...action.format },
         isFormatsPopupOpen: false,
       }
       nextPreview.children[action.subId] = nextSubPreview
     } else {
-      nextPreview.format = {...action.format}
+      nextPreview.format = { ...action.format }
       nextPreview.isFormatsPopupOpen = false
     }
 
@@ -90,7 +90,7 @@ const handlers = {
   },
   [types.PREVIEW_SCREEN_OPEN_FORMATS_POPUP]: (state, action) => {
     let nextPreviews = [...state.previews]
-    let nextPreview = {...state.previews[action.id]}
+    let nextPreview = { ...state.previews[action.id] }
 
     if (action.subId !== undefined && action.subId !== null) {
       let nextSubPreview = {
@@ -128,11 +128,11 @@ const handlers = {
   [types.PREVIEW_SCREEN_PREVIEW_WS_UPDATE]: (state, action) => {
     let nextPreviews = [...state.previews]
     for (let actionPreview of action.previews) {
-      let nextPreview = {...state.previews[actionPreview.id]}
+      let nextPreview = { ...state.previews[actionPreview.id] }
 
       let tempPreview = null
       if (actionPreview.subId !== undefined && actionPreview.subId !== null) {
-        tempPreview = {...nextPreview.children[actionPreview.subId]}
+        tempPreview = { ...nextPreview.children[actionPreview.subId] }
         nextPreview.children[actionPreview.subId] = tempPreview
       } else {
         tempPreview = nextPreview
@@ -149,6 +149,34 @@ const handlers = {
     return {
       ...state,
       previews: nextPreviews,
+    }
+  },
+  [types.PREVIEW_SCREEN_PREVIEW_WS_PROCESS]: (state, { entry: actionPreview }) => {
+    console.log(actionPreview)
+    const nextPreviews = [...state.previews]
+    const nextPreview = { ...state.previews[actionPreview.id] }
+
+    let tempPreview = null
+    if (actionPreview.subId !== undefined && actionPreview.subId !== null) {
+      tempPreview = { ...nextPreview.children[actionPreview.subId] }
+      nextPreview.children[actionPreview.subId] = tempPreview
+    } else {
+      tempPreview = nextPreview
+    }
+
+    tempPreview.locked = true
+    nextPreviews[actionPreview.id] = nextPreview
+    return {
+      ...state,
+      previews: nextPreviews,
+    }
+  },
+  [types.PREVIEW_SCREEN_PREVIEW_HEADER_UPDATE]: (state, action) => {
+    return {
+      ...state,
+      header: {
+        href: action.finalFilePath,
+      }
     }
   },
 }

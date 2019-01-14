@@ -40,8 +40,8 @@ class InputScreen extends Component {
           <div className='InputScreen_description'>
             <div>
               e.g.<br/>
-              {this.props.exampleLinks.map(link =>
-                <ExampleLink onClick={this.useExample} link={link}/>
+              {this.props.exampleLinks.map((link, i) =>
+                <ExampleLink key={i} onClick={this.useExample} link={link}/>
               )}
             </div>
             <button className='btn' onClick={this.props.toggleHelp}>

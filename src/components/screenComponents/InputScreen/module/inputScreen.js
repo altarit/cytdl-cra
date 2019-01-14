@@ -1,10 +1,12 @@
 const INPUT_SCREEN_RESCAN_AREA = 'INPUT_SCREEN_RESCAN_AREA'
 const INPUT_SCREEN_TOGGLE_HELP = 'INPUT_SCREEN_TOGGLE_HELP'
 
-const LINK_REGEXP = new RegExp('(http|https)://([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?', 'gm')
+const LINK_REGEXP = new RegExp('(http|https)://([\\w_-]+(?:(?:\\.[\\w_-]+)+))([\\w.,@?^=%&:/~+#-]*[\\w@?^=%&/~+#-])?',
+  'gm')
 
 export function rescanArea(text) {
   let links = text.match(LINK_REGEXP) || []
+  links = links.filter((el, i) => links.indexOf(el) === i)
   return {
     type: INPUT_SCREEN_RESCAN_AREA,
     links: links,
